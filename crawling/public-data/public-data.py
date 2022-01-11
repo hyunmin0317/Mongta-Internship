@@ -9,6 +9,8 @@ def main(n):
     data = []
 
     soup = BeautifulSoup(urlopen(URL), 'html.parser')
+
+    print(soup)
     for href in soup.find("div", class_='result-list').find_all("dt"):
         urls.append(BASIC+href.find("a")["href"])
 
