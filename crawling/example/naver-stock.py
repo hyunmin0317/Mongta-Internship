@@ -47,8 +47,6 @@ def save_data(stock):
             tds += ('/' + td)
 
         data.append(tds.split('/'))
-    print(len(data[0]))
-    print(len(columns))
     df = pd.DataFrame(data, columns=columns)
     df.to_csv(stock+'.csv', index=False, encoding='cp949')
     print(stock+'의 기업실적분석 데이터를 저장했습니다.\n')
