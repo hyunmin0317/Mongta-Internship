@@ -8,7 +8,7 @@ data = []
 f = open("link.csv", 'r')
 rea = csv.reader(f)
 for row in rea:
-    urls.append(str(row[0]))
+    urls.append(row[0])
 f.close
 
 for url in urls:
