@@ -9,7 +9,7 @@ class Question(models.Model):
     create_date = models.DateTimeField()                            # 등록일
     modify_date = models.DateTimeField(null=True, blank=True)       # 수정일
 
-    data_format = models.CharField(max_length=500, blank=True)                      # 데이터포멧
+    url = models.CharField(max_length=500, blank=True)              # 데이터url
 
     voter = models.ManyToManyField(User, related_name='voter_question')
 

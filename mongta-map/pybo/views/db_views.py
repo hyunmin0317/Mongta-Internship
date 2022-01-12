@@ -7,9 +7,9 @@ from pybo.models import Question
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-def save(subject, content, data_format):
+def save(subject, content, url):
     user = User.objects.get(id=2)
-    d = Question(author=user, subject=subject, content=content, create_date=timezone.now(), data_format=data_format)
+    d = Question(author=user, subject=subject, content=content, create_date=timezone.now(), url=url)
     d.save()
 
 def update(self):
@@ -21,7 +21,7 @@ def update(self):
         data.append(row)
 
     for d in data:
-        save(d[0], d[1], d[4])
+        save(d[0], d[1], d[9])
 
     return HttpResponse("업데이트 완료")
 

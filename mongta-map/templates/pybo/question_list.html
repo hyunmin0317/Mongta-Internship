@@ -55,7 +55,7 @@
         {% endfor %}
         {% else %}
         <tr>
-            <td colspan="3">질문이 없습니다.</td>
+            <td colspan="3">데이터가 없습니다.</td>
         </tr>
         {% endif %}
         </tbody>
@@ -98,7 +98,7 @@
         {% endif %}
     </ul>
     <!--  페이징처리 끝  -->
-    <a href="{% url 'pybo:question_create' %}" class="btn btn-primary">질문 등록하기</a>
+    <a href="{% url 'pybo:question_create' %}" class="btn btn-primary">데이터 등록하기</a>
 </div>
 
 <form id="searchForm" method="get" action="{% url 'index' %}">

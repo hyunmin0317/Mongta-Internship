@@ -22,7 +22,8 @@
         <div class="col-11"> <!-- 질문영역 -->
             <div class="card">
                 <div class="card-body">
-                    <div class="card-text">{{ question.content|mark }}</div>
+                    <div class="card-text">카테고리{{ question.content|mark }}</div>
+                    <div class="card-text">바로가기 링크<a href={{question.url}}>{{ question.url|mark }}</a> </div>
                     <div class="d-flex justify-content-end">
                         {% if question.modify_date %}
                         <div class="badge badge-light p-2 text-left mx-3">
