@@ -22,11 +22,11 @@
         <div class="col-11"> <!-- 질문영역 -->
             <div class="card">
                 <div class="card-body">
-                    <div class="card-text">카테고리{{ question.category|mark }}</div>
-                    <div class="card-text">기관{{ question.agency|mark }}</div>
-                    <div class="card-text">업데이트 주기{{ question.update_date|mark }}</div>
-                    <div class="card-text">바로가기 링크<a href={{question.url}}>{{ question.url|mark }}</a> </div>
-                    <div class="card-text">설명{{ question.content|mark }}</div>
+                    <div class="card-text"><h5><b>카테고리</b></h5>{{ question.category|mark }}</div><br>
+                    <div class="card-text"><h5><b>기관</b></h5>{{ question.agency|mark }}</div><br>
+                    <div class="card-text"><h5><b>업데이트 주기</b></h5>{{ question.update_date|mark }}</div><br>
+                    <div class="card-text"><h5><b>바로가기 링크</b></h5><a href={{question.url}}>{{ question.url|mark }}</a></div><br>
+                    <div class="card-text"><h5><b>설명</b></h5>{{ question.content|mark }}</div><br>
 
                     <div class="d-flex justify-content-end">
                         {% if question.modify_date %}
@@ -71,10 +71,10 @@
                     {% endfor %}
                     </div>
                     {% endif %}
-                    <div>
-                        <a href="{% url 'pybo:comment_create_question' question.id  %}"
-                           class="small"><small>댓글 추가 ..</small></a>
-                    </div>
+<!--                    <div>-->
+<!--                        <a href="{% url 'pybo:comment_create_question' question.id  %}"-->
+<!--                           class="small"><small>댓글 추가 ..</small></a>-->
+<!--                    </div>-->
                     <!-- 질문 댓글 End -->
                 </div>
             </div>

@@ -31,6 +31,9 @@ urlpatterns = [
     path('vote/answer/<int:answer_id>/', vote_views.vote_answer, name='vote_answer'),
 
     # db_views.py
-    path('update/', db_views.update, name='db_update'),
+    path('update/public', db_views.update_public, name='update_public'),
+    path('update/seoul', db_views.update_seoul, name='update_seoul'),
+    path('update/data', db_views.update_data, name='update_data'),
+
     path('delete/', db_views.delete, name='db_delete'),
 ]
