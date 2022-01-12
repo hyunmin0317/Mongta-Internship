@@ -23,7 +23,8 @@
         <tr class="text-center thead-dark">
             <th>번호</th>
             <th>추천</th>
-            <th style="width:50%">제목</th>
+            <th style="width:35%">제목</th>
+            <th>카테고리</th>
             <th>글쓴이</th>
             <th>작성일시</th>
         </tr>
@@ -49,6 +50,7 @@
                 <span class="text-danger small ml-2">{{ question.answer_set.count }}</span>
                 {% endif %}
             </td>
+            <td>{{ question.category }}</td>
             <td>{{ question.author.username }}</td>  <!-- 글쓴이 추가 -->
             <td>{{ question.create_date }}</td>
         </tr>
