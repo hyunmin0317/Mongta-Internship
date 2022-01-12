@@ -8,7 +8,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 def save(subject, content, data_format):
-    user = User.objects.get(id=1)
+    user = User.objects.get(id=2)
     d = Question(author=user, subject=subject, content=content, create_date=timezone.now(), data_format=data_format)
     d.save()
 
@@ -24,3 +24,8 @@ def update(self):
         save(d[0], d[1], d[4])
 
     return HttpResponse("업데이트 완료")
+
+def delete(self):
+    d = Question.objects.all()
+    d.delete()
+    return HttpResponse("삭제 완료")

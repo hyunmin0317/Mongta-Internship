@@ -32,4 +32,5 @@ urlpatterns = [
 
     # db_views.py
     path('update/', db_views.update, name='db_update'),
+    path('delete/', db_views.delete, name='db_delete'),
 ]
