@@ -25,6 +25,7 @@ def crawling(n):
 
             for content in soup.find("ul", class_='list-info').find_all("dd"):
                 d.append(content.text.replace(u'\xa0', u'').replace(u'\t', u'').replace(u'\n', u'').replace(u'\r', u''))
+            d.append(url)
             data.append(d)
         print("epoch: "+str(i))
 
