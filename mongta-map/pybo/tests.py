@@ -1,3 +1,4 @@
 from django.test import TestCase
+from views import db_views
 
-# Create your tests here.
+db_views.update()
