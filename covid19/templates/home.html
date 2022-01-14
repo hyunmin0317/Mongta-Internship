@@ -1,0 +1,9 @@
+<h1>COVID-19</h1>
+{% for d in data %}
+    <h3>{{d.S_DT}}</h3>
+    <h5>신규 확진자: {{d.N_HJ}}</h5>
+    <h5>확진자: {{d.T_HJ}}</h5>
+    <h5>사망자: {{d.DEATH}}</h5>
+    <h5>완치자: {{d.T_HJ}}</h5>
+    <br>
+{% endfor %}

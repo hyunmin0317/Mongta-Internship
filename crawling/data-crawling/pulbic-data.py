@@ -37,7 +37,7 @@ def main(n):
 
     df = pd.DataFrame(data)
     print(df)
-    df.to_csv('public-data.csv', index=False, encoding='utf-8-sig')
+    df.to_csv('DB.csv', index=False, encoding='utf-8-sig')
 
 if __name__ == '__main__':
-    main(200)
+    main(1000)
