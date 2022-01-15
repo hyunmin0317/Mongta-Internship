@@ -8,11 +8,10 @@ def covid19_API(n):
     return data
 
 def home(request):
-    data = covid19_API(5)
-    context = {'data': data}
-    return render(request, 'home.html', context)
-
-def detail(request, n):
-    data = covid19_API(n)
-    context = {'data': data}
+    today = covid19_API(1)[0]
+    data_week = covid19_API(7)
+    data_list = covid19_API(365)
+    data_week.reverse()
+    data_list.reverse()
+    context = {"today":today, "data_week":data_week, "data_list":data_list}
     return render(request, 'home.html', context)

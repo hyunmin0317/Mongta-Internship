@@ -1,9 +1,153 @@
-<h1>COVID-19</h1>
-{% for d in data %}
-    <h3>{{d.S_DT}}</h3>
-    <h5>신규 확진자: {{d.N_HJ}}</h5>
-    <h5>확진자: {{d.T_HJ}}</h5>
-    <h5>사망자: {{d.DEATH}}</h5>
-    <h5>완치자: {{d.T_HJ}}</h5>
-    <br>
-{% endfor %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'icon.svg' %}">
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'jumbotron-narrow.css' %}">
+    <!-- JS -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart', 'bar']});
+        google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data_week = new google.visualization.DataTable();
+            data_week.addColumn('string', '날짜');
+            data_week.addColumn('number', '확진자');
+            data_week.addColumn({type:'number', role:'annotation'})
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', '날짜');
+                data.addColumn('number', '확진자');
+
+                data_week.addRows([
+                    {% for d in data_week %}
+                    ['{{d.S_DT}}', {{d.N_HJ}}, {{d.N_HJ}}],
+                    {% endfor %}
+                  ]);
+
+                data.addRows([
+                    {% for d in data_list %}
+                    ['{{d.S_DT}}', {{d.N_HJ}}],
+                    {% endfor %}
+                  ]);
+
+                var week_options = {
+                colors: ['#F15F5F'],
+                vAxis: {
+                  minValue: 0
+                },
+                  width: '100%',
+                  height: 400,
+                };
+
+                var options = {
+                  colors: ['#F15F5F'],
+                  vAxis: {
+                      minValue: 0
+                    },
+                  width: '100%',
+                  height: 400,
+                };
+
+                var chart = new google.visualization.ColumnChart(document.getElementById('chart_week'));
+                chart.draw(data_week, week_options);
+
+                var charts = new google.visualization.LineChart(document.getElementById('chart_all'));
+                charts.draw(data, options);
+                window.addEventListener('resize', drawChart,false)
+                }
+    </script>
+
+    <title>
+        Covid19-KR
+    </title>
+</head>
+<body>
+
+<div align="center" class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'covid19:home' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-broadcast-pin" viewBox="0 0 16 16">
+                  <path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM6 8a2 2 0 1 1 2.5 1.937V15.5a.5.5 0 0 1-1 0V9.937A2 2 0 0 1 6 8z"/>
+                </svg>
+                COVID19-KR
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=choihm9903@gmail.com" target="_blank">Contact</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://github.com/hyunmin0317/COVID19-KR">Github</a>
+              </li>
+          </ul>
+          <span class="navbar-text">
+              Update: {{today.S_DT}}
+          </span>
+        </div>
+      </div>
+    </nav>
+
+    <div style="padding-top: 30px;">
+        <div class="row gx-2">
+            <div class='col'>
+                <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-subtitle mb-2 text-muted">확진자</h5>
+                      <h4 class="card-title" style="color:#F15F5F;"><b>{{today.T_HJ}}</b></h4>
+                      <h6 class="card-title" style="color:#F15F5F;"><b>+{{today.N_HJ}}</b></h6>
+                  </div>
+                </div>
+            </div>
+            <div class='col'>
+                <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-subtitle mb-2 text-muted">사망자</h5>
+                      <h4 class="card-title" style="color:#2F4F4F;"><b>{{today.DEATH}}</b></h4>
+                      <h6 class="card-title" style="color:#2F4F4F;"><b>+{{death}}</b></h6>
+                  </div>
+                </div>
+            </div>
+            <div class='col'>
+                <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-subtitle mb-2 text-muted">완치자</h5>
+                      <h4 class="card-title" style="color:#86E57F;"><b>{{today.T_HJ}}</b></h4>
+                      <h6 class="card-title" style="color:#86E57F;"><b>+{{released}}</b></h6>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding-top:50px;">
+        <h3>{{data.string}} 신규합계</h3>
+        <h2 style="color:#F15F5F;"><b>{{today.N_HJ}}</b></h2>
+        <div id="chart_week"></div>
+    </div>
+
+    <h3>신규 확진자수 추이</h3>
+    <div id="chart_all"></div>
+
+    <footer class="footer">
+        <p>© Hyunmin 2021</p>
+    </footer>
+
+    </div>
+    <!-- /container -->
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  </body>
+</html>
+

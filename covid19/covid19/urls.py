@@ -1,6 +1,8 @@
 from django.urls import path
-from .views import detail
+from .views import home
+
+app_name ='covid19'
 
 urlpatterns = [
-    path('<int:n>/', detail, name='detail'),
+    path('', home, name='home'),
 ]
