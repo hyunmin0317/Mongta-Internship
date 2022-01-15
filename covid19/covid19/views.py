@@ -9,9 +9,14 @@ def covid19_API(n):
 
 def home(request):
     today = covid19_API(1)[0]
+    yesterday = covid19_API(2)[1]
     data_week = covid19_API(7)
     data_list = covid19_API(365)
     data_week.reverse()
     data_list.reverse()
-    context = {"today":today, "data_week":data_week, "data_list":data_list}
+
+    death = int(today['DEATH']) - int(yesterday['DEATH'])
+    released = int(today['RECOVER']) - int(yesterday['RECOVER'])
+
+    context = {"today":today, "data_week":data_week, "data_list":data_list, 'death':death, 'released':released}
     return render(request, 'home.html', context)

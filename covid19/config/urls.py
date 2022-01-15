@@ -16,9 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-import covid_19.views
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('covid_19.urls')),
+    path('', include('covid19.urls')),
 ]
