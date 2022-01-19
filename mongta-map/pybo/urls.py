@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import base_views, question_views, answer_views, comment_views, vote_views, db_views
+from .views import base_views, question_views, answer_views, comment_views, vote_views, db_views, seoul_wifi
 
 app_name = 'pybo'
 
@@ -34,6 +34,8 @@ urlpatterns = [
     path('update/public', db_views.update_public, name='update_public'),
     path('update/seoul', db_views.update_seoul, name='update_seoul'),
     path('update/data', db_views.update_data, name='update_data'),
-
     path('delete/', db_views.delete, name='db_delete'),
+
+    # seoul_wifi.py
+    path('seoul/', seoul_wifi.home, name='seoul'),
 ]
