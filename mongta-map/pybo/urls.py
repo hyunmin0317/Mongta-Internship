@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import base_views, question_views, answer_views, comment_views, vote_views, db_views, seoul_wifi
+from .views import base_views, question_views, answer_views, comment_views, vote_views, db_views, elastic
 
 app_name = 'pybo'
 
@@ -36,6 +36,7 @@ urlpatterns = [
     path('update/data', db_views.update_data, name='update_data'),
     path('delete/', db_views.delete, name='db_delete'),
 
-    # seoul_wifi.py
-    path('seoul/', seoul_wifi.home, name='seoul'),
+    # elastic.py
+    path('seoul/', elastic.seoul, name='seoul'),
+    path('covid19/', elastic.covid19, name='covid19'),
 ]
