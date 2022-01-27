@@ -1,0 +1,11 @@
+package kr.or.spring.test.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class Controller {
+	@GetMapping(path="/test")
+	public String test() {
+		return "test";
+	}
+}

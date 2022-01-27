@@ -1,0 +1,11 @@
+package kr.or.spring.test.controller;
+
+
+
+@Controller
+public class Controller {
+	@GetMapping(path="/test")
+	public String test() {
+		return "test";
+	}
+}

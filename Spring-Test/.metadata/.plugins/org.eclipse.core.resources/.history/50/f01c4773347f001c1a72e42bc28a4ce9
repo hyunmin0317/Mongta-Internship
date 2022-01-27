@@ -1,0 +1,13 @@
+package kr.or.spring.test.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+
+@Controller
+public class Controller {
+	
+	@GetMapping(path="/test")
+	public String list() {
+		return "test";
+	}
+}
