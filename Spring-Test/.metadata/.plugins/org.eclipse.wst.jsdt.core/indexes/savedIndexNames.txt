@@ -1,8 +1,0 @@
-INDEX VERSION 1.4+C:\Users\CodeWise\OneDrive - 몽타 주식회사\바탕 화면\Spring-Test\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3271193799.index
-211074678.index
-840085897.index
-2261622762.index
-1823557430.index
-1868689249.index
-4038182890.index
