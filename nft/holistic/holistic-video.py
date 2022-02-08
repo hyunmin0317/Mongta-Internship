@@ -6,7 +6,7 @@ mp_drawing_styles = mp.solutions.drawing_styles
 mp_holistic = mp.solutions.holistic
 
 # For webcam input:
-cap = cv2.VideoCapture('./test.mp4')
+cap = cv2.VideoCapture('./test4.mp4')
 
 # 재생할 파일의 넓이와 높이
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
@@ -24,9 +24,9 @@ with mp_holistic.Holistic(
   while cap.isOpened():
     success, image = cap.read()
     if not success:
-      print("Ignoring empty camera frame.")
+      print("The End")
       # If loading a video, use 'break' instead of 'continue'.
-      continue
+      break
 
     # To improve performance, optionally mark the image as not writeable to
     # pass by reference.
@@ -52,7 +52,7 @@ with mp_holistic.Holistic(
         .get_default_pose_landmarks_style())
     # Flip the image horizontally for a selfie-view display.
 
-    cv2.imshow('MediaPipe Holistic', cv2.flip(image, 1))
+    cv2.imshow('MediaPipe Holistic', image)
     out.write(image)
     if cv2.waitKey(5) & 0xFF == 27:
       break

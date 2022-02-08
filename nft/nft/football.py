@@ -1,6 +1,6 @@
 import cv2
 
-cap = cv2.VideoCapture('test3.mp4')
+cap = cv2.VideoCapture('puskas2021_src.mp4')
 
 # 재생할 파일의 넓이와 높이
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
@@ -9,7 +9,8 @@ height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
 print("재생할 파일 넓이, 높이 : %d, %d" % (width, height))
 
 fourcc = cv2.VideoWriter_fourcc(*'DIVX')
-out = cv2.VideoWriter('output3.mp4', fourcc, 30.0, (int(width), int(height)))
+# out = cv2.VideoWriter('puskas2020.mp4', fourcc, 30.0, (int(width), int(height)))
+out = cv2.VideoWriter('puskas2021.mp4', fourcc, 25.0, (int(width), int(height)))
 
 while True:
     ok, img = cap.read()
@@ -28,7 +29,7 @@ while True:
 
     img = cv2.cvtColor(edge_img, cv2.COLOR_RGB2BGR)
 
-    cv2.imshow('result', img)
+    # cv2.imshow('puskas2020', img)
     key = cv2.waitKey(1)  # -1
 
     out.write(img)
