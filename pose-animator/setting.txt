@@ -1,0 +1,10 @@
+# 깃허브 주소
+https://github.com/yemount/pose-animator
+# npm을 이용하여 yarn package manager 설치하기
+npm install --global yarn
+# ms visual studio 버전 설정
+npm config set msvs_version 2019
+# yarn build
+yarn
+# yarn start
+yarn start
