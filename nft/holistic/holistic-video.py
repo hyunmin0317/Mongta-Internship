@@ -7,7 +7,7 @@ mp_drawing_styles = mp.solutions.drawing_styles
 mp_holistic = mp.solutions.holistic
 
 # For webcam input:
-cap = cv2.VideoCapture('./test3.mp4')
+cap = cv2.VideoCapture('./video.mp4')
 
 # 재생할 파일의 넓이와 높이
 width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
@@ -57,7 +57,7 @@ with mp_holistic.Holistic(
         .get_default_pose_landmarks_style())
     # Flip the image horizontally for a selfie-view display.
 
-    # print(results.pose_landmarks.landmark[mp_holistic.PoseLandmark.NOSE])
+    print(results.pose_landmarks.landmark[mp_holistic.PoseLandmark.NOSE])
     cv2.imshow('MediaPipe Holistic', image_holistic)
     out.write(image_holistic)
     if cv2.waitKey(5) & 0xFF == 27:
