@@ -19,7 +19,10 @@ def naver_API(start, end):
                 "groupName": "비트코인",
                 "keywords": [
                     "비트코인",
-                    "bitcoin"
+                    "비트코인 가격",
+                    "비트코인 값",
+                    "bitcoin",
+                    "bitcoin price"
                 ]
             }
         ]
